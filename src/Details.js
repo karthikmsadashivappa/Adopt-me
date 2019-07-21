@@ -1,15 +1,11 @@
 import React from "react";
-import pet from "@frontendmasters/pet"
+import pet from "@frontendmasters/pet";
+import Carousel from "./Carousel";
 
-class Details extends React.Component{
-  constructor(props){
-    super(props)
-      this.state = {
-        loading: true
-      }
-  }
-  componentDidMount(){
-    pet.animal( this.props.id ).then(({ animal }) => {
+class Details extends React.Component {
+  state = { loading: true };
+  componentDidMount() {
+    pet.animal(this.props.id).then(({ animal }) => {
       this.setState({
         name: animal.name,
         animal: animal.type,
@@ -23,13 +19,14 @@ class Details extends React.Component{
   }
   render() {
     if (this.state.loading) {
-      return <h1>Loading...</h1>
+      return <h1>Loading...</h1>;
     }
 
-    const {animal, breed, location, description, name} = this.state;
+    const { animal, breed, location, description, name, media } = this.state;
 
     return (
       <div className="details">
+        <Carousel media={media} />
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
@@ -37,7 +34,7 @@ class Details extends React.Component{
           <p>{description}</p>
         </div>
       </div>
-    )
+    );
   }
 }
 
