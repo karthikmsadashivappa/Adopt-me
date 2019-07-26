@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { css, keyframes } from "@emotion/core";
+import { css } from "@emotion/core";
 import Color from "./Color";
-
-const spin = keyframes`
-  to {
-    transform: rotate(360deg);
-  }
-`;
 
 const NavBar = () => (
   <header
@@ -22,12 +16,6 @@ const NavBar = () => (
     <span
       css={css`
         font-size: 60px;
-        display: inline-block;
-        animation: 1s ${spin} linear infinite;
-        &:hover {
-          animation: 1s ${spin} reverse infinite;
-          text-decoration: underline;
-        }
       `}
       aria-label="logo"
       role="img"
