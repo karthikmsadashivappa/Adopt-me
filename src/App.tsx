@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Router } from "@reach/router";
+import ReactDOM from "react-dom";
+import { Router, Link } from "@reach/router";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
 import ThemeContext from "./ThemeContext";
-import NavBar from "./NavBar";
 
 const App = () => {
   const themeHook = useState("peru");
@@ -11,7 +11,9 @@ const App = () => {
     <React.StrictMode>
       <ThemeContext.Provider value={themeHook}>
         <div>
-          <NavBar />
+          <header>
+            <Link to="/">Adopt ME!</Link>
+          </header>
           <Router>
             <SearchParams path="/" />
             <Details path="/details/:id" />
@@ -22,4 +24,4 @@ const App = () => {
   );
 };
 
-export default App;
+ReactDOM.render(<App />, document.getElementById("root"));
